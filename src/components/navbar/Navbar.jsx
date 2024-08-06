@@ -151,7 +151,7 @@ export default function Navbar() {
             color: mode === "dark" ? "white" : "",
           }}
         >
-          Get free delivery on orders over ₹300
+          Get free delivery on orders over ₹500
         </p>
 
         <nav

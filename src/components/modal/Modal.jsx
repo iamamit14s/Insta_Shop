@@ -4,8 +4,11 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { Fragment, useContext, useState } from "react";
+import { toast } from "react-toastify";
 import MyContext from "../../context/data/MyContext";
+import { fireDB } from "../../firebase/FirebaseConfig";
 
 export default function Modal({
   name,
@@ -16,9 +19,10 @@ export default function Modal({
   setAddress,
   setPincode,
   setPhoneNumber,
-  buyNow,
 }) {
   let [isOpen, setIsOpen] = useState(false);
+  const context = useContext(MyContext);
+  const { setLoading } = context;
 
   function closeModal() {
     setIsOpen(false);
@@ -28,10 +32,56 @@ export default function Modal({
     setIsOpen(true);
   }
 
-  const {addOrder,clearCart} = useContext(MyContext);
-  const handleOrderNow = async()=>{
-    
-  }
+  //Handling Order Now submit button
+  const handleOrderNow = async () => {
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!currentUser) {
+      toast.error("User not logged in");
+      return;
+    } else if (!cartItems) {
+      toast.error(" Cart is empty");
+      return;
+    }
+
+    if (!name || !address || !pincode || !phoneNumber) {
+      toast.error("Please fill all fields");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const orderData = {
+        userId: currentUser.user.uid,
+        email: currentUser.user.email,
+        name,
+        address,
+        pincode,
+        phoneNumber,
+        cartItems,
+        orderDate: new Date().toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
+      };
+
+      const orderRef = doc(collection(fireDB, "order"));
+      await setDoc(orderRef, { ...orderData, id: orderRef.id });
+
+      toast.success("Order has been placed");
+      setLoading(false);
+      closeModal();
+    localStorage.removeItem('cart');
+      window.location.href = "/order";
+    } catch (error) {
+      toast.error("Failed to place order");
+      console.error("error placing orders", error);
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -86,7 +136,7 @@ export default function Modal({
                               <input
                                 type="text"
                                 value={name}
-                                onChange={(e)=>setName(e.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                                 name="name"
                                 id="name"
                                 className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
@@ -101,8 +151,8 @@ export default function Modal({
                                 Enter Full Address
                               </label>
                               <input
-                              value={address}
-                              onChange={(e)=>setAddress(e.target.value)}
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                                 type="text"
                                 name="address"
                                 id="address"
@@ -118,8 +168,8 @@ export default function Modal({
                                 Enter Pincode
                               </label>
                               <input
-                              value={pincode}
-                              onChange={(e)=>setPincode(e.target.value)}
+                                value={pincode}
+                                onChange={(e) => setPincode(e.target.value)}
                                 type="text"
                                 name="pincode"
                                 id="pincode"
@@ -135,8 +185,8 @@ export default function Modal({
                                 Enter Mobile Number
                               </label>
                               <input
-                              value={phoneNumber}
-                              onChange={(e)=>setPhoneNumber(e.target.value)}
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
                                 type="text"
                                 name="mobileNumber"
                                 id="mobileNumber"
@@ -146,8 +196,7 @@ export default function Modal({
                             </div>
                           </form>
                           <button
-                            onClick={()=>{buyNow();
-                              closeModal}}
+                            onClick={handleOrderNow}
                             type="button"
                             className="focus:outline-none w-full text-white bg-green-600 hover:bg-violet-800 outline-0 font-medium rounded-lg text-sm px-5 py-2.5"
                           >

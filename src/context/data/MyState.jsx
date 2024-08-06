@@ -149,27 +149,27 @@ const initialProductsState= {
   };
 
   //Set ordered data to firestore 
-  const addOrder = async(orderData)=>{
-    setLoading(true)
-    try {
-      const orderRef = doc(collection(fireDB,'order'));
-      await setDoc(orderRef,{...orderData,id:orderRef.id})
-      toast.success('Order has been placed')
-      setLoading(false);
+  // const addOrder = async(orderData)=>{
+  //   setLoading(true)
+  //   try {
+  //     const orderRef = doc(collection(fireDB,'order'));
+  //     await setDoc(orderRef,{...orderData,id:orderRef.id})
+  //     toast.success('Order has been placed')
+  //     setLoading(false);
       
-    } catch (error) {
-      console.log(error);
-      setLoading(false);   
-    }
-  }
+  //   } catch (error) {
+  //     console.log(error);
+  //     setLoading(false);   
+  //   }
+  // }
 
   //clear cart after order
-  const [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')))
-  const clearCart=()=>{
-    setCartItems([])
-    localStorage.setItem('cartItems',JSON.stringify([]));
-    console.log('CART ITEMS CLEARED',cartItems);
-  }
+  // const [cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')))
+  // const clearCart=()=>{
+  //   setCartItems([])
+  //   localStorage.setItem('cartItems',JSON.stringify([]));
+  //   console.log('CART ITEMS CLEARED',cartItems);
+  // }
 
 
   //Get Order Data
@@ -243,7 +243,6 @@ const initialProductsState= {
         editHandle,
         updateProduct,
         deleteProduct,
-        order,
         user,
         searchkey,
         setSearchkey,
@@ -252,8 +251,9 @@ const initialProductsState= {
         filterPrice,
         setFilterPrice,
         closeUpdateProduct ,
-        addOrder,
-        clearCart,
+        order,
+        getOrderData,
+        
       }}
     >
       <div>{props.children}</div>
