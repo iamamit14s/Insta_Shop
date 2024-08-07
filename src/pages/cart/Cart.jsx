@@ -125,7 +125,7 @@ function Cart() {
 
   return (
     <Layout>
-      <div
+      {cartItems.length>0 ?   <div
         className="min-h-screen bg-gray-100 pt-5 mb-4"
         style={{
           backgroundColor: mode === "dark" ? "#282c34" : "",
@@ -270,7 +270,12 @@ function Cart() {
             />
           </div>
         </div>
-      </div>
+      </div> :  (
+        <h2 className="min-h-screen text-center font-semibold text-4xl text-pink-600 m-12">
+          You haven't added anything to the cart yet..!
+        </h2>
+      ) }
+    
     </Layout>
   );
 }

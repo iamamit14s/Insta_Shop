@@ -127,7 +127,7 @@ function Order() {
           </div>
         </>
       ) : (
-        <h2 className=" text-center font-semibold tex-2xl text-pink-600 m-12">
+        <h2 className=" min-h-screen text-center font-semibold text-4xl text-pink-600 m-12">
           You haven't ordered anything yet. Please Order...!
         </h2>
       )}
