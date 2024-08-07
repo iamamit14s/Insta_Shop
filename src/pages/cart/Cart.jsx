@@ -237,7 +237,7 @@ function Cart() {
                 className="text-gray-700"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                {shipping}
+                {totalAmount<500 ? shipping : 0}
               </p>
             </div>
             <hr className="my-4" />
@@ -272,9 +272,13 @@ function Cart() {
           </div>
         </div>
       </div> :  (
-        <h2 className="min-h-screen text-center font-semibold text-4xl text-pink-600 m-12">
-          You haven't added anything to the cart yet..!
+        <div>
+          <h1 className="mb-10 mt-10 text-center text-2xl font-bold" style={{ color: mode === "dark" ? "white" : "" }}>Cart Items</h1>
+          <h2 className="min-h-screen text-center font-semibold text-4xl text-pink-600 m-12">
+          Your cart is empty...!
         </h2>
+        </div>
+        
       ) }
     
     </Layout>

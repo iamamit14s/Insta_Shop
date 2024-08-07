@@ -39,6 +39,7 @@ function Order() {
       {userOrders.length > 0 ? (
         <>
           <div className=" h-full pt-10">
+          <h1 className="mb-10 text-center text-2xl font-bold" style={{ color: mode === "dark" ? "white" : "" }}>Order Items</h1>
             {userOrders
               .map((order) => {
                 return (
@@ -108,9 +109,13 @@ function Order() {
           </div>
         </>
       ) : (
-        <h2 className=" min-h-screen text-center font-semibold text-4xl text-pink-600 m-12">
+        <div>
+          <h1 className="mb-10 mt-10 text-center text-2xl font-bold">Order Items</h1>
+          <h2 className=" min-h-screen text-center font-semibold text-4xl text-pink-600 m-12">
           You haven't ordered anything yet. Please Order...!
         </h2>
+        </div>
+        
       )}
     </Layout>
   );
