@@ -1,7 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { BsFillCloudSunFill } from "react-icons/bs";
-import { FaUserCheck } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
@@ -16,10 +15,9 @@ export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user"));
   const cartItems = useSelector((state) => state.cart);
 
-  const email = user?.user?.email || '';
- const firstLetter =  email.charAt(0);
- console.log('firstLetter', firstLetter);
- 
+  const email = user?.user?.email || "";
+  const firstLetter = email.charAt(0);
+  console.log("firstLetter", firstLetter);
 
   const logout = () => {
     localStorage.clear("user");
@@ -120,7 +118,6 @@ export default function Navbar() {
                       className="-m-2 block p-2 font-medium text-xl text-gray-900 cursor-pointer"
                     >
                       {firstLetter}
-                      
                     </Link>
                   </div>
                 </div>
@@ -209,7 +206,7 @@ export default function Navbar() {
                 </Link>
               </div>
 
-              <div className="ml-auto flex items-center">
+              <div className="ml-auto flex items-center justify-evenly">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
                     to={"/allproducts"}
@@ -270,9 +267,7 @@ export default function Navbar() {
                       to={"/"}
                       className="pb-1 font-medium text-gray-900 cursor-pointer text-xl"
                     >
-                     
                       {firstLetter}
-                      
                     </Link>
                   </div>
                 ) : (
@@ -305,20 +300,20 @@ export default function Navbar() {
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     <div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                      />
-                    </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                        />
+                      </svg>
                     </div>
                     <div
                       className="ml-2 text-sm font-medium text-gray-700 group-"
@@ -326,7 +321,9 @@ export default function Navbar() {
                     >
                       {cartItems.length}
                     </div>
-                    <div className="ml-2 text-sm font-medium text-gray-700" style={{ color: mode === "dark" ? "white" : ""}}
+                    <div
+                      className="ml-2 text-sm font-medium text-gray-700"
+                      style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Cart
                     </div>
