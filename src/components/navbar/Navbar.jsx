@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const email = user?.user?.email || "";
   const firstLetter = email.charAt(0);
-  console.log("firstLetter", firstLetter);
+
 
   const logout = () => {
     localStorage.clear("user");
