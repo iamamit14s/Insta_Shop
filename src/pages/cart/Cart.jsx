@@ -42,12 +42,13 @@ function Cart() {
   }, [cartItems]);
 
   const shipping = parseInt(100);
-  const grandTotal = totalAmount + shipping;
+
+  const grandTotal = totalAmount >= 500 ? totalAmount : (totalAmount + shipping) ;
 
 
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify(cartItems));
-  // }, [cartItems]);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   useEffect(()=>{
     window.scrollTo(0,0)
