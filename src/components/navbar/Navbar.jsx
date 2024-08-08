@@ -111,10 +111,10 @@ export default function Navbar() {
                     </div>
                   )}
                   {user ? (
-                    <div className=" flex w-10 h-8 rounded-full bg-slate-200 justify-center items-center">
+                    <div className=" flex w-10 h-8 rounded-full bg-pink-500 justify-center items-center">
                       <Link
                         to={"/"}
-                        className="-m-2 block p-2 font-medium text-xl text-gray-900 cursor-pointer"
+                        className="-m-2 block pb-2 font-medium text-xl text-gray-900 cursor-pointer"
                       >
                         {firstLetter}
                       </Link>
@@ -203,7 +203,7 @@ export default function Navbar() {
             color: mode === "dark" ? "white" : "",
           }}
         >
-          Get free delivery on orders over ₹500
+          Get free delivery on orders above ₹499
         </p>
 
         <nav

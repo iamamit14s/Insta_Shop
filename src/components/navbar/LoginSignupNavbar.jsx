@@ -147,7 +147,7 @@ function LoginSignupNavbar() {
             color: mode === "dark" ? "white" : "",
           }}
         >
-          Get free delivery on orders over ₹300
+          Get free delivery on orders above ₹499
         </p>
 
         <nav
