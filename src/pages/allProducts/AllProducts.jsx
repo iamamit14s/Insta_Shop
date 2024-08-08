@@ -65,11 +65,11 @@ function Allproducts() {
             <div className="h-1 w-20 bg-pink-600 rounded"></div>
           </div>
 
-          <div className="flex flex-wrap -m-4">
+          <div className="sm:grid sm:grid-cols-2 flex-wrap md:grid md:grid-cols-3 lg:flex lg:flex-wrap -m-4">
             {filteredProducts.map((item, index) => {
                 const { title, price, description, imageURL, id } = item;
                 return (
-                  <div key={index} className="p-4 md:w-1/4  drop-shadow-lg ">
+                  <div key={index} className="p-4 lg:w-1/4  drop-shadow-lg ">
                     <div
                       className="relative flex flex-col h-full border-2 hover:shadow-pink-700 hover:shadow-2xl transition-shadow duration-300 ease-in-out border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
                       style={{
