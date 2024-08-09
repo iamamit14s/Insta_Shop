@@ -24,7 +24,7 @@ function ProductCard() {
   }, [cartItems]);
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font -mt-6">
       <div className="container px-5 py-8 md:py-16 mx-auto">
         <div className="lg:w-1/2 w-full mb-6 lg:mb-10">
           <h1
