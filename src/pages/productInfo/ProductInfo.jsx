@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
@@ -16,7 +16,7 @@ function ProductInfo() {
   const params = useParams();
   // console.log(products.title)
 
-  const getProductData = async () => {
+  const getProductData = async (item) => {
     setLoading(true);
     try {
       const productTemp = await getDoc(doc(fireDB, "products",params.id));
