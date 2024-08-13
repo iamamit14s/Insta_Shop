@@ -5,6 +5,7 @@ import Layout from "../../components/layout/Layout";
 import MyContext from "../../context/data/MyContext";
 import { addToCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
 
 function Allproducts() {
   const context = useContext(MyContext);
@@ -23,6 +24,9 @@ function Allproducts() {
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
+
+ const navigate = useNavigate();
+ 
 
   const addCart = (item) => {
     dispatch(addToCart(item));
@@ -77,7 +81,7 @@ function Allproducts() {
                         color: mode === "dark" ? "white" : "",
                       }}
                     >
-                      <div onClick={()=> window.location.href = `/productinfo/${id}`} className="flex justify-center cursor-pointer">
+                      <div onClick={()=> navigate(`/productInfo/${id}`)} className="flex justify-center cursor-pointer">
                         <img
                           className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out"
                           src={imageURL}

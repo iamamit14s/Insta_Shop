@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Navigate,
+  Switch,
   Route,
   BrowserRouter as Router,
   Routes,
@@ -58,7 +59,9 @@ const App = () => {
               }
             ></Route>
             <Route path="/signUp" element={<SignUp />}></Route>
+            <Switch>
             <Route path="/productInfo/:id" element={<ProductInfo />}></Route>
+            </Switch>
             <Route path="/*" element={<NoPage />}></Route>
           </Routes>
           <ToastContainer />
