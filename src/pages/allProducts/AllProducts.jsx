@@ -5,7 +5,7 @@ import Layout from "../../components/layout/Layout";
 import MyContext from "../../context/data/MyContext";
 import { addToCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Allproducts() {
   const context = useContext(MyContext);
