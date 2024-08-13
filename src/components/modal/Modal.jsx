@@ -120,7 +120,7 @@ export default function Modal({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl p-2 text-left align-middle shadow-xl transition-all bg-gray-50">
+                <DialogPanel className="max-md:mb-40  w-full max-w-md transform overflow-hidden rounded-2xl p-2 text-left align-middle shadow-xl transition-all bg-gray-50">
                   <section className="">
                     <div className="flex flex-col items-center justify-center py-8 mx-auto lg:py-0">
                       <div className="w-full rounded-lg md:mt-0 sm:max-w-md xl:p-0">

@@ -219,7 +219,9 @@ export default function Navbar() {
                   </div>
                 </Link>
               </div>
-              {user ?  <div className="absolute right-1 flow-root  lg:ml-6">
+
+              {/* cart */}
+              {/* <div className="absolute right-1 flow-root  lg:ml-6">
                 <Link
                   to={"/cart"}
                   className="group -m-2 flex items-center p-2"
@@ -254,8 +256,8 @@ export default function Navbar() {
                     Cart
                   </div>
                 </Link>
-              </div> : ''
-            }
+              </div>  */}
+            
              
 
               <div className={`ml-auto flex items-center justify-evenly`}>
@@ -345,7 +347,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Cart */}
-                <div className="hidden ml-4 lg:flow-root lg:ml-6">
+                <div className=" ml-4 lg:flow-root lg:ml-6">
                   <Link
                     to={"/cart"}
                     className="group -m-2 flex items-center p-2"
