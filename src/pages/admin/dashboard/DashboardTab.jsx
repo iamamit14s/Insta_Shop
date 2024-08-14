@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { AiFillShopping } from "react-icons/ai";
 import { FaCartPlus, FaUser } from "react-icons/fa";

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {FaUserTie } from 'react-icons/fa';
 import Layout from '../../../components/layout/Layout';
 import MyContext from '../../../context/data/MyContext';
@@ -8,7 +8,7 @@ function Dashboard() {
 
     const context = useContext(MyContext)
     const { mode,user,product} = context
-    
+
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
