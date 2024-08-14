@@ -5,8 +5,14 @@ import MyContext from '../../../context/data/MyContext';
 import DashboardTab from './DashboardTab';
 
 function Dashboard() {
+
     const context = useContext(MyContext)
     const { mode,user,product} = context
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
   return (
     <Layout>
         <section className="text-gray-600 body-font mt-10 mb-10">
