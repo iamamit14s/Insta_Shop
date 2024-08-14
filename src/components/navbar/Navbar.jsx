@@ -4,7 +4,7 @@ import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import MyContext from "../../context/data/MyContext";
 
 export default function Navbar() {
@@ -18,9 +18,10 @@ export default function Navbar() {
   const email = user?.user?.email || "";
   const firstLetter = email.charAt(0);
 
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.clear("user");
-    <Navigate to= "/login"/>
+    navigate('/login')
   };
 
   return (

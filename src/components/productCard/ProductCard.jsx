@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import MyContext from "../../context/data/MyContext";
 import { addToCart } from "../../redux/CartSlice";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard() {
   const context = useContext(MyContext);
@@ -18,6 +19,8 @@ function ProductCard() {
     dispatch(addToCart(product));
     toast.success("add to cart");
   };
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -49,9 +52,8 @@ function ProductCard() {
                   }}
                 >
                   <div
-                    onClick={() =>
-                      (window.location.href = `/productinfo/${id}`)
-                    }
+                   onClick={()=> navigate(`/productInfo/${id}`)}
+                    
                     className="flex justify-center cursor-pointer"
                   >
                     <img
