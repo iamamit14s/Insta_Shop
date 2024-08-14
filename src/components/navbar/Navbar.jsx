@@ -4,7 +4,7 @@ import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import MyContext from "../../context/data/MyContext";
 
 export default function Navbar() {
@@ -20,7 +20,7 @@ export default function Navbar() {
 
   const logout = () => {
     localStorage.clear("user");
-    window.location.href = "/login";
+    <Navigate to= "/login"/>
   };
 
   return (
