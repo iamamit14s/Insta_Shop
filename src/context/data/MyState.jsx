@@ -13,11 +13,13 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import MyContext from "./MyContext";
+import { useNavigate } from "react-router-dom";
 
 
 
 const MyState = (props) => {
   
+  const navigate = useNavigate();
   
   const [mode, setMode] = useState("light");
 
@@ -77,7 +79,7 @@ const initialProductsState= {
         theme:'colored'
       });
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       }, 800);
       getProductData();
       setLoading(false);
