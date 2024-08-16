@@ -180,6 +180,7 @@ const initialProductsState= {
 
   //Get Order Data
   const [order, setOrder] = useState([]);
+
   const getOrderData = async () => {
     setLoading(true);
     try {
@@ -188,12 +189,13 @@ const initialProductsState= {
       result.forEach((doc) => {
         ordersArray.push(doc.data());
         setOrder(ordersArray);
-        setLoading(false);
       });
     } catch (error) {
       console.log(error);
+    }finally{
       setLoading(false);
     }
+   
   };
 
   //Get USER DATA
