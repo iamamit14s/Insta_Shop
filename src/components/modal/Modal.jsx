@@ -6,9 +6,12 @@ import {
 } from "@headlessui/react";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { Fragment, useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MyContext from "../../context/data/MyContext";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import { emptyCart } from "../../redux/CartSlice";
 
 export default function Modal({
   name,
@@ -22,7 +25,13 @@ export default function Modal({
 }) {
   let [isOpen, setIsOpen] = useState(false);
   const context = useContext(MyContext);
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const { setLoading } = context;
+
+  const clearCart = () => {
+    dispatch(emptyCart());
+  };
 
   function closeModal() {
     setIsOpen(false);
@@ -72,10 +81,14 @@ export default function Modal({
       await setDoc(orderRef, { ...orderData, id: orderRef.id });
 
       toast.success("Order has been placed");
-      setLoading(false);
+      //Clear the cart
+
+      localStorage.removeItem("cart");
+      clearCart();
       closeModal();
-    localStorage.removeItem('cart');
-      window.location.href = "/order";
+      //redirect to the order page
+      Navigate("/order");
+      setLoading(false);
     } catch (error) {
       toast.error("Failed to place order");
       console.error("error placing orders", error);
