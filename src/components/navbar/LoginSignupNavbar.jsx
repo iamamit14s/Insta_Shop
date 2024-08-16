@@ -13,10 +13,6 @@ function LoginSignupNavbar() {
   const context = useContext(MyContext);
   const { toggleMode, mode } = context;
 
-  // const logout = () => {
-  //   localStorage.clear("user");
-  //   window.location.href = "/login";
-  // };
 
   return (
     <div className="bg-white sticky top-0 z-50">

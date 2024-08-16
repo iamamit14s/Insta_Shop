@@ -13,13 +13,13 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import MyContext from "./MyContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 const MyState = (props) => {
   
-  
+ const  Navigate= useNavigate();
   
   const [mode, setMode] = useState("light");
 
@@ -79,7 +79,7 @@ const initialProductsState= {
         theme:'colored'
       });
       setTimeout(() => {
-        <Navigate to ={"/dashboard"} />
+        Navigate("/dashboard")
       }, 800);
       getProductData();
       setLoading(false);
@@ -87,7 +87,9 @@ const initialProductsState= {
       console.log(error);
       setLoading(false);
     }
-    initialProductsState();
+    setTimeout(() => {
+      setProducts(initialProductsState);
+    }, 800);
   };
 
   //RETRIEVING UPDATED PRODUCT DATA IN FIRESTORE
@@ -125,7 +127,7 @@ const initialProductsState= {
       toast.success("Product Updated Successfully");
       getProductData();
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        Navigate("/dashboard") ;
       }, 800);
 
       setLoading(false);
@@ -133,7 +135,9 @@ const initialProductsState= {
       console.log(error);
       setLoading(false);
     }
-    initialProductsState();
+    setTimeout(() => {
+      setProducts(initialProductsState);
+    }, 800);
   };
 
   // Delete Product Functionality
@@ -220,7 +224,7 @@ const initialProductsState= {
   const [filterPrice, setFilterPrice] = useState("");
 
   const closeUpdateProduct = ()=>{
-    window.location.href='/dashboard'
+    Navigate("/dashboard")
     
   }
 
@@ -238,7 +242,7 @@ const initialProductsState= {
         loading,
         setLoading,
         products,
-        setProducts,
+        setProducts,        
         getProductData,
         addProduct,
         product,
@@ -255,7 +259,7 @@ const initialProductsState= {
         closeUpdateProduct ,
         order,
         getOrderData,
-        
+        initialProductsState,
       }}
     >
       <div>{props.children}</div>

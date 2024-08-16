@@ -1,25 +1,38 @@
 import React, { useContext, useEffect } from "react";
 import MyContext from "../../../context/data/MyContext";
-import { Link } from "react-router-dom";
 
 function UpdateProduct() {
   const context = useContext(MyContext);
-  const { products, setProducts, updateProduct,closeUpdateProduct} = context;
+  const {
+    products,
+    setProducts,
+    updateProduct,
+    closeUpdateProduct,
+    initialProductsState,
+  } = context;
 
-  useEffect(()=>{
-    window.scrollTo(0,0)
-},[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="absolute top-0 z-[-2] min-h-screen  w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]">
       <div className=" flex justify-center items-center min-h-screen ">
         <div className=" bg-gray-800 px-10 py-10 rounded-xl lg:w-[30%]">
           <div className="relative">
-          <div className="absolute top-0 -right-0.5 text-white text-xl mb-4 font-bold"><button onClick={closeUpdateProduct}>X</button></div> 
+            <div className="absolute top-0 -right-0.5 text-white text-xl mb-4 font-bold">
+              <button
+                onClick={() => {
+                  closeUpdateProduct();
+                  setProducts(initialProductsState);
+                }}
+              >
+                X
+              </button>
+            </div>
             <h1 className="text-center text-white text-xl mb-4 font-bold">
               Update Product
             </h1>
-            
           </div>
           <div>
             <input
@@ -83,7 +96,10 @@ function UpdateProduct() {
             ></textarea>
           </div>
           <div className=" flex justify-center mb-3">
-            <button onClick={updateProduct} className=" bg-yellow-500 w-full text-black font-bold  px-2 py-2 rounded-lg">
+            <button
+              onClick={updateProduct}
+              className=" bg-yellow-500 w-full text-black font-bold  px-2 py-2 rounded-lg"
+            >
               Update Product
             </button>
           </div>

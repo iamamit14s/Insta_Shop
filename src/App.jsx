@@ -23,8 +23,8 @@ import Allproducts from "./pages/allProducts/AllProducts";
 const App = () => {
   return (
     <>
-      <MyState>
-        <Router>
+    <Router>
+      <MyState> 
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route
@@ -64,8 +64,9 @@ const App = () => {
             <Route path="/*" element={<NoPage />}></Route>
           </Routes>
           <ToastContainer />
+          </MyState>
         </Router>
-      </MyState>
+      
     </>
   );
 };
